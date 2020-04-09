@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             image.compress(Bitmap.CompressFormat.JPEG, options, baos);// 这里压缩options%，把压缩后的数据存放到baos中
             Log.i("wangbei", "压缩中......" + baos.toByteArray().length);
         }
-        Log.i("wangbei", "压缩结束-->>" + baos.toByteArray().length);
+        Log.i("wangbei", "压缩结束-->" + baos.toByteArray().length);
         ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());// 把压缩后的数据baos存放到ByteArrayInputStream中
         Bitmap bitmap = BitmapFactory.decodeStream(isBm, null, null);// 把ByteArrayInputStream数据生成图片
         File outFile = new File(path, "压缩后.png");
