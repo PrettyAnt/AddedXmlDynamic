@@ -1,6 +1,7 @@
 package com.example.addedxmldynamic.ui;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -8,8 +9,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -57,12 +59,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(MainActivity.this, "添加布局", Toast.LENGTH_SHORT).show();
                 ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
-                View inflate = inflater.inflate(R.layout.view_yun, null);
-                LinearLayout containView = (LinearLayout) inflate.findViewById(R.id.ll_yun_view);//view添加成功
-                containView.setLayoutParams(params);
-                mMainNeed.addView(containView);
+                View inflate = inflater.inflate(R.layout.view_yun, mMainNeed,false);
+//                LinearLayout containView = (LinearLayout) inflate.findViewById(R.id.ll_yun_view);//view添加成功
+//                containView.setLayoutParams(params);
+                mMainNeed.addView(inflate);
                 AnimationUtils.showAndHiddenAnimation(MainActivity.this, mMainNeed, AnimationUtils.AnimationState.STATE_SHOW, 500);
-                initContainView(containView);
+//                initContainView(containView);
 
                 break;
             case R.id.tv_remove_view://移除布局
